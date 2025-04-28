@@ -25,7 +25,7 @@ const NewSongs = ({newAlbum,title}) => {
         </Typography>
       </div>
 
-      {showAll ? <GridData albums={newAlbum} /> : <Carousel />}
+      {showAll ? <GridData albums={newAlbum} /> : <Carousel albums={newAlbum} />}
     </div>
   );
 }
