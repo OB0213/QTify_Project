@@ -1,0 +1,16 @@
+.hero{
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 280px;
+}
+
+.heroContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
