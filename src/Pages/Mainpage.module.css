@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    min-height:100vh;
+    max-width: 100vw;
+    background-color: #121212;
+    overflow-y: auto;
+}
+
+.mytitle
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+
+}
+
+.mainStyle
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #34C938;
+}
+
+.albumTitle
+{
+    color: white !important;
+    font-size: 10px;
+}

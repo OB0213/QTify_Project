@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Hero from './Components/Hero';
+import Mainpage from './Pages/Mainpage';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,8 +27,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <Navbar />
-    <Hero />
+    <Mainpage />
     </ThemeProvider>
   )
 }
