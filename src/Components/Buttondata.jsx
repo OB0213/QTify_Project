@@ -6,7 +6,7 @@ const Buttondata = ({text,functionData}) => {
   return (
     <div>
       <button className={styles.button}>
-        <Typography className={styles.text}>{text}</Typography>
+        <Typography className={styles.textData}>{text}</Typography>
       </button>
     </div>
   )
