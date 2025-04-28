@@ -21,7 +21,7 @@ const NewSongs = ({newAlbum,title}) => {
           sx={{ cursor: "pointer", marginBottom: "10px" }}
           onClick={handleShowAll}
         >
-          {showAll ? `Collapse` : `Show All`}
+          {showAll ? `Show All` : `Show All`}
         </Typography>
       </div>
 
