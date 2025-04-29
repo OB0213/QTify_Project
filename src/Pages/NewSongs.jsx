@@ -21,11 +21,11 @@ const NewSongs = ({newAlbum,title}) => {
           sx={{ cursor: "pointer", marginBottom: "10px" }}
           onClick={handleShowAll}
         >
-          {showAll ? `Show All` : `Show All`}
+          {showAll ? `Show All` : `Collapse All`}
         </Typography>
       </div>
 
-      {showAll ? <GridData albums={newAlbum} /> : <Carousel albums={newAlbum} />}
+      {showAll ?<Carousel albums={newAlbum} />: <GridData albums={newAlbum} />}
     </div>
   );
 }

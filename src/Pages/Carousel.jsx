@@ -1,5 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import {
   Grid,
   Card,
@@ -10,15 +11,20 @@ import {
   Box,
 } from "@mui/material";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import styles from './Mainpage.module.css';
 
 const Carousel = ({albums}) => {
   return (
     <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={30}
       slidesPerView={5}
-      loop={true}
-      navigation={true}
+      navigation
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log("slide change")}
     >
       <Grid container spacing={2}>
         {albums.map((album, index) => (

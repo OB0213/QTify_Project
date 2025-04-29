@@ -4,11 +4,16 @@ import Hero from '../Components/Hero';
 import styles from './Mainpage.module.css';
 import axios from 'axios'
 import NewSongs from './NewSongs';
+import Songs from './SongsData';
+import SongsData from './SongsData';
 
 const Mainpage = () => {
     const [topAlbum,setTopAlbum]=useState([]);
     const [newAlbum,setNewAlbum]=useState([]);
-    
+    const [songs,setSongs]=useState([]);
+    const [genre, setGenre] = useState([]);
+
+   
 
     const fetchTopAlbum=async()=>{
         let response = await axios.get(
@@ -31,16 +36,38 @@ const Mainpage = () => {
 
     useEffect(()=>{
         fetchNewAlbum();
-    },[])
+    },[]);
+
+    const fetchSongs=async()=>{
+        let response = await axios.get(
+          `https://qtify-backend-labs.crio.do/songs`
+        );
+        setSongs(response.data);
+    }
+
+    useEffect(()=>{
+        fetchSongs();
+    },[]);
+
+    
+   
+
+   
+    
+
 
     console.log(topAlbum);
-    console.log(newAlbum)
+    console.log(newAlbum);
+    console.log(songs);
+    console.log(genre);
   return (
     <div className={styles.container}>
     <Navbar />
     <Hero />
     <NewSongs title={"Top Albums"} newAlbum={topAlbum}/>
     <NewSongs title={"New Albums"} newAlbum={newAlbum}></NewSongs>
+    <SongsData songs={songs}></SongsData>
+   
     </div>
   )
 }
