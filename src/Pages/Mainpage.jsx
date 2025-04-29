@@ -12,6 +12,7 @@ const Mainpage = () => {
     const [newAlbum,setNewAlbum]=useState([]);
     const [songs,setSongs]=useState([]);
     const [genre, setGenre] = useState([]);
+    const [data,setData]=useState([]);
 
    
 
@@ -49,6 +50,25 @@ const Mainpage = () => {
         fetchSongs();
     },[]);
 
+
+     const fetchData = async () => {
+         let response = await axios.get(
+           "https://qtify-backend-labs.crio.do/genres");
+         setData(response.data.data);
+         console.log("Data is:",response.data.data);
+       
+        
+       };
+    
+       useEffect(() => {
+         fetchData();
+         for(let i=0;i<data.length;i++){
+          setGenre((prev)=>[...prev,data[i].label]);
+         }
+       }, []);
+       console.log(JSON.stringify(genre));
+
+
     
    
 
@@ -66,7 +86,7 @@ const Mainpage = () => {
     <Hero />
     <NewSongs title={"Top Albums"} newAlbum={topAlbum}/>
     <NewSongs title={"New Albums"} newAlbum={newAlbum}></NewSongs>
-    <SongsData songs={songs}></SongsData>
+    <SongsData songs={songs} genre={genre}></SongsData>
    
     </div>
   )

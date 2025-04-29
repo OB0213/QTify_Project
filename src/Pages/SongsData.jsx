@@ -6,9 +6,9 @@ import axios from 'axios';
 import Carousel from './Carousel';
 
 
-const SongsData = ({songs}) => {
+const SongsData = ({songs,genre}) => {
   console.log(songs);
-  const [genre,setGenre]=useState(["All"]);
+  const [genreData,setGenreData]=useState([]);
   const [data,setData]=useState([]);
   const [songsData,setSongsData]=useState([]);
 
@@ -22,32 +22,22 @@ const SongsData = ({songs}) => {
     setSongsData(songs);
    })
   
-   const fetchData = async () => {
-     let response = await axios.get(
-       "https://qtify-backend-labs.crio.do/genres");
-     setData(response.data.data);
-     console.log("Data is:",response.data.data);
-   
-    
-   };
-
-   useEffect(() => {
-     fetchData();
-   }, []);
-   console.log(JSON.stringify(genre));
+  
 
    useEffect(()=>{
- for (let i = 0; i < data.length; i++) {
-   setGenre((prev) => [...prev, data[i].label]);
+
+   setGenreData([...genre,"All"]);
  }
-   },[])
+,[]);
+
+console.log(genreData);
 
    useEffect(()=>{
-    if(selectedTab===0){
+    if(selectedTab===genreData.length-1){
       setSongsData(songs);
     }
     else{
-      const filteredSongs=songs.filter((item,index)=>item.genre.label===genre[selectedTab]);
+      const filteredSongs=songs.filter((item,index)=>item.genre.label===genreData[selectedTab]);
       setSongsData(filteredSongs);
     }
 
@@ -67,7 +57,7 @@ const SongsData = ({songs}) => {
     <Box sx={{ width: '100%' }}>
       {/* Tabs */}
       <Tabs value={selectedTab} onChange={handleChange}>
-        {genre.map((item, index) => (
+        {genreData.map((item, index) => (
           <Tab key={index} label={item} className={styles.tabTitles}/>
         ))}
       </Tabs>
